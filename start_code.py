@@ -10,9 +10,7 @@ from database_wrapper import Database
 # parameters voor connectie met de database
 db = Database(host="localhost", gebruiker="user", wachtwoord="password", database="attractiepark")
 
-
 # main
-
 # Haal de eigenschappen op van een personeelslid
 # altijd verbinding openen om query's uit te voeren
 db.connect()
@@ -47,14 +45,22 @@ db.close()
 # verzamel alle benodigde gegevens in een dictionary
 dagtakenlijst = {
     "personeelsgegevens" : {
+        "id": personeelslid[0]['id'],
         "naam": personeelslid[0]['naam'], # voorbeeld van hoe je bij een eigenschap komt
+        "werktijd": personeelslid[0]['werktijd'],
         "beroepstype": personeelslid[0]['beroepstype'],
-        # STAP 1: vul aan met andere benodigde eigenschappen
-    },
+        "bevoegdheid": personeelslid[0]['bevoegdheid'],
+        "specialist_in_attracties": personeelslid[0]['specialist_in_attracties'],
+        "pauze_opsplitsen": personeelslid[0]['pauze_opsplitsen'],
+        "leeftijd": personeelslid[0]['leeftijd'],
+        "verlaagde_fysieke_belasting": personeelslid[0]['verlaagde_fysieke_belasting'],
+        }
+
+    ,
     "weergegevens" : {
         # STAP 4: vul aan met weergegevens
-    }, 
-    "dagtaken": [] # STAP 2: hier komt een lijst met alle dagtaken
+    },
+    "dagtaken": []# STAP 2: hier komt een lijst met alle dagtaken
     ,
     "totale_duur": 0 # STAP 3: aanpassen naar daadwerkelijke totale duur
 }
